@@ -1,11 +1,10 @@
 $(document).ready(function () {
     function actualizarDatos() {
         $.ajax({
-            url: 'index.php?ajax=true', // Llama a la misma página con el parámetro `ajax=true`
+            url: 'index.php?ajax=true',
             method: 'GET',
             dataType: 'json',
             success: function (data) {
-                console.log(data); // Para depuración
                 if (!data.error) {
                     $('#suelo1-value').text(data.suelo1 + '%');
                     $('#suelo2-value').text(data.suelo2 + '%');
@@ -51,6 +50,6 @@ $(document).ready(function () {
         });
     }
 
-    actualizarDatos(); // Llama a la función al cargar la página
-    setInterval(actualizarDatos, 1000); // Actualiza cada 5 segundos
+    actualizarDatos();
+    setInterval(actualizarDatos, 1000);
 });
