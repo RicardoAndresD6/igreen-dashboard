@@ -1,0 +1,65 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1; 
+}
+
+.glass-effect {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.sensor-card {
+    transition: all 0.3s ease;
+}
+
+.sensor-card:hover {
+    transform: translateY(-5px);
+}
+
+.pulse-animation {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(72, 187, 120, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(72, 187, 120, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(72, 187, 120, 0); }
+}
+
+.text-green-c{
+    color: #c0f625 !important;
+}
+
+.card-background-color {
+    background-color: #151515 !important;
+}
+
+.ui-card {
+    border-radius: 20px;
+    box-shadow: 0 10px 20px -12px rgba(16, 24, 40, .1);
+    box-shadow: 0 0 0 1px #e4e4e7, 0 10px 15px -3px rgba(0, 0, 0, .05), 0 4px 6px -4px rgba(0, 0, 0, .05);
+    box-shadow: 0 0 0 1px transparent, 0 10px 15px -3px rgba(0, 0, 0, .05), 0 4px 6px -4px rgba(0, 0, 0, .05);
+}
+
+.card-border-color {
+    border-color: #3b3b3f !important;
+}
+
+@media (max-width: 640px) {
+    .sensor-card {
+        padding: 0.75rem !important;
+    }
+    .sensor-card .text-4xl {
+        font-size: 1.75rem !important;
+    }
+}
