@@ -52,4 +52,50 @@ $(document).ready(function () {
 
     actualizarDatos();
     setInterval(actualizarDatos, 1000);
+    
+    $('#btn-riego').on('click', function () {
+        console.log('Escribiendo comando en comando.txt...');
+    
+        $.ajax({
+            url: 'index.php?ajax=escribir_comando',
+            method: 'POST',
+            success: function (res) {
+                try {
+                    const response = JSON.parse(res);
+                    console.log('Respuesta del servidor:', response);
+    
+                    if (response.status === 'success') {
+                        Swal.fire({
+                            icon: 'success',
+                            title: '¡Éxito!',
+                            text: response.message,
+                            confirmButtonColor: '#22c55e'
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: response.message
+                        });
+                    }
+                } catch (error) {
+                    console.error('Error al procesar la respuesta del servidor:', error);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error inesperado',
+                        text: 'No se pudo procesar la respuesta del servidor.'
+                    });
+                }
+            },
+            error: function () {
+                console.error('Error al realizar la solicitud al servidor');
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'No se pudo conectar con el servidor.'
+                });
+            }
+        });
+    });
+
 });
